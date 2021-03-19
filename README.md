@@ -108,12 +108,13 @@ Allows users to scroll through recipes with the use of an API.
 
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="WireFrames/sketch.png" width=250>
 
-### [BONUS] Digital Wireframes & Mockups
+### [BONUS] Digital Wireframes & Mockups           
+<img src="WireFrames/digital.png" width=250>
 
 ### [BONUS] Interactive Prototype
+<img src="WireFrames/prototype_dishList.gif" width=250>
 
 ## Schema 
 [This section will be completed in Unit 9]
