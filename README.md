@@ -18,10 +18,10 @@ Allows users to scroll through recipes with the use of an API.
 [Evaluation of your app across the following attributes]
 - **Category:** Recipe Catalog/Cooking
 - **Mobile:** This app is developed for mobile phones/tablets. It's purpose is to have the portability so that the user can take it with them whereever with ease. Functionality will be limited to mobile devices. 
-- **Story:** 
-- **Market:** Anyone who cooks can use this app.
+- **Story:** Shows list of recipes, from which the user can decide which ones they like. After "hearting" the recipe, they will be stored in users favorited section. The user can also filter recipes based on certain keywords to narrow down their search.
+- **Market:** Anyone who cooks or wants to learn how to cook can use this app.
 - **Habit:** This app could be used whenever someone wants to cook, or when someone is shopping for ingredients.
-- **Scope:**
+- **Scope:** There are still many people today who cook frequently and some everyday, this app has the potential to take a chunk in the huge market that is the food industry.
 
 ## Product Spec
 
