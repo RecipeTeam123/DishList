@@ -1,40 +1,37 @@
 package com.example.dishlist_back4app;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.Button;
-
+import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private BottomNavigationView bottomNavigationView;
     private Button btnLogOut;
 
-
     RecyclerView rvRecipes;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //top ToolBar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        //Bottom Navigation View
         bottomNavigationView = findViewById(R.id.bottomNavigation);
         btnLogOut = findViewById(R.id.btnLogOut);
 
-        // Action Bar Color Change
-        ActionBar actionBar;
-        actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#ffcc4c"));
-        actionBar.setBackgroundDrawable(colorDrawable);
+//        ActionBar actionBar;     // Action Bar Color Change in the xml and the them
+//        actionBar = getSupportActionBar();
+//        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#ffcc4c"));
+//        actionBar.setBackgroundDrawable(colorDrawable);
 
         /* code for Bottom Navigation Bar *NOT WORKING YET* */
         /*
@@ -59,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
         });*/
 
         rvRecipes = findViewById(R.id.rvRecipes);
+    }
 
+    // Menu icons are inflated just as they were with actionbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
     }
 }
