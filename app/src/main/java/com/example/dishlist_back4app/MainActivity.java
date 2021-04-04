@@ -2,6 +2,7 @@ package com.example.dishlist_back4app;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,14 +13,19 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private BottomNavigationView bottomNavigationView;
     private Button btnLogOut;
+
+
+    RecyclerView rvRecipes;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         bottomNavigationView = findViewById(R.id.bottomNavigation);
         btnLogOut = findViewById(R.id.btnLogOut);
@@ -51,5 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });*/
+
+        rvRecipes = findViewById(R.id.rvRecipes);
+
     }
 }
