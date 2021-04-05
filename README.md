@@ -29,28 +29,28 @@ DishList gives users the ability to find the recipe they are looking for without
 **Required Must-have Stories**
 
 * [fill in your required user stories here]
-
-[X] User can register an account
-
-[X] User can log in
-
-[ ] User can see a list of recipes
-
-[ ] User can search/filter recipes
-
-[ ] User can open a specific recipe
-
-[ ] User can save favorite recipes
+- [X] User can register an account
+- [X] User can log in
+- [ ] User can see a list of recipes
+- [ ] User can search/filter recipes
+- [ ] User can open a specific recipe
+- [ ] User can save favorite recipes
 
 
 **Optional Nice-to-have Stories**
 
 * [fill in your required user stories here]
-* App will reopen on the same recipe if closed (persistence)
-* User will remain logged in (persistence)
-* User can add a recipe
-* User can add a picture for their recipe
-* User can find recipes based on ingredients
+- [ ] App will reopen on the same recipe if closed (persistence)
+- [ ] User will remain logged in (persistence)
+- [ ] User can add a recipe
+- [ ] User can add a picture for their recipe
+- [ ] User can find recipes based on ingredients
+
+
+### App Walkthough GIF
+
+<img src="dishList_sprint1_walkthrough.gif" width=250><br> 
+
 
 ### 2. Screen Archetypes
 
@@ -192,4 +192,7 @@ Creation Screen
     
 Settings Screen
     (Read/GET) Query logged in user object
+    
+    
+
     
