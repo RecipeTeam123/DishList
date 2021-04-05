@@ -29,12 +29,12 @@ DishList gives users the ability to find the recipe they are looking for without
 **Required Must-have Stories**
 
 * [fill in your required user stories here]
-* User can register an account
-* User can log in
-* User can see a list of recipes
-* User can search/filter recipes
-* User can open a specific recipe
-* User can save favorite recipes
+[X] User can register an account
+[X] User can log in
+[ ] User can see a list of recipes
+[ ] User can search/filter recipes
+[ ] User can open a specific recipe
+[ ] User can save favorite recipes
 
 **Optional Nice-to-have Stories**
 
