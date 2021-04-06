@@ -1,10 +1,13 @@
 package com.example.dishlist_back4app;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -53,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return true;
             }
-        });*/
+        });
+
+         */
 
         rvRecipes = findViewById(R.id.rvRecipes);
     }
