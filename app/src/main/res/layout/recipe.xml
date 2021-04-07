@@ -9,26 +9,25 @@
 
 
     <ImageView
-        android:id="@+id/ivRecipiePicture"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/ivRecipePicture"
+        android:layout_width="117dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:contentDescription="@string/image_for_recipe"
-        app:srcCompat="@drawable/test_image" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvRecipieName"
+        android:id="@+id/tvRecipeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
-        android:layout_toEndOf="@+id/ivRecipiePicture"
-        android:textSize="14sp"
+        android:layout_toEndOf="@+id/ivRecipePicture"
+        android:textSize="16sp"
         android:textStyle="bold"
         tools:text="Chroizo and Mozzarella Gnocchi Bake" />
 
@@ -36,11 +35,20 @@
         android:id="@+id/tvRecipeDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvRecipieName"
+        android:layout_below="@+id/tvRecipeName"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
-        android:layout_toEndOf="@+id/ivRecipiePicture"
+        android:layout_toEndOf="@+id/ivRecipePicture"
         tools:text="Upgrade cheesy tomato pasta with gnocchi, chorizo and mozzarella for a comforting bake that makes an excellent midweek meal" />
+
+    <ImageView
+        android:id="@+id/ivHeart"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tvRecipeDescription"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="210dp"
+        app:srcCompat="@drawable/recipe_like_heart" />
 
 </RelativeLayout>

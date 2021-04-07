@@ -76,7 +76,7 @@
         android:layout_marginStart="46dp"
         android:layout_marginLeft="46dp"
         android:layout_marginBottom="208dp"
-        android:text="Directions"
+        android:text="Method"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="79dp"
         tools:layout_editor_absoluteY="516dp" />
