@@ -4,15 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-
 import androidx.appcompat.widget.Toolbar;
-
 import com.example.dishlist_back4app.fragments.AddRecipeFragment;
 import com.example.dishlist_back4app.fragments.HomeFragment;
 import com.example.dishlist_back4app.fragments.SettingsFragment;
@@ -32,12 +27,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        btnLogOut = findViewById(R.id.btnLogOut);
-
-//        ActionBar actionBar;     // Action Bar Color Change in the xml and the them
-//        actionBar = getSupportActionBar();
-//        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#ffcc4c"));
-//        actionBar.setBackgroundDrawable(colorDrawable);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -63,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu (Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return true;
