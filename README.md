@@ -31,7 +31,7 @@ DishList gives users the ability to find the recipe they are looking for without
 * [fill in your required user stories here]
 - [X] User can register an account
 - [X] User can log in
-- [ ] User can see a list of recipes
+- [X] User can see a list of recipes
 - [ ] User can search/filter recipes
 - [ ] User can open a specific recipe
 - [ ] User can save favorite recipes
