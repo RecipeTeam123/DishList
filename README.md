@@ -174,8 +174,7 @@ query.findInBackground(new FindCallback<Post>(){
 ```
 
 Details Screen
-    (Update) Change the status of "like"
-    (Delete) Delete recipe if the user is the creator
+    (Update) Add recipe to favorites for user
 
 
 Register Screen
