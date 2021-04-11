@@ -49,10 +49,13 @@ DishList gives users the ability to find the recipe they are looking for without
 
 ### App Walkthough GIF
 
-* Sprint 1 GIF
-<img src="dishList_sprint1_walkthrough.gif" width=250><br> 
+Here is a walkthough GIF for Sprint 1:
 
-* Sprint 2 GIF
+<img src="dishList_sprint1_walkthrough.gif" width=250><br> <br>
+
+
+Here is a walkthough GIF for Sprint 2:
+
 <img src="dishList_sprint2_walkthrough.gif" width=250><br> 
 
 
