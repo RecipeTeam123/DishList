@@ -172,6 +172,40 @@ query.findInBackground(new FindCallback<Post>(){
 }
 
 ```
+```java
+ParseUser.logInInBackground(username, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with login", e);
+                    Toast.makeText(LoginActivity.this, "Issue with login", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                goMainActivity();
+                Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
+            }
+        });
+```
+```java
+      // Create the ParseUser
+        ParseUser user = new ParseUser();
+        // Set core properties
+        user.setUsername(username);
+        user.setPassword(password);
+
+        user.signUpInBackground(new SignUpCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    // Hooray! Let them use the app now.
+                } else {
+                    // Sign up didn't succeed. Look at the ParseException
+                    // to figure out what went wrong
+                }
+            }
+        });
+```
+
+
 
 Details Screen
     (Update) Add recipe to favorites for user
