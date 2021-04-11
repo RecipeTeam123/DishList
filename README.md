@@ -53,7 +53,7 @@ DishList gives users the ability to find the recipe they are looking for without
 <img src="dishList_sprint1_walkthrough.gif" width=250><br> 
 
 * Sprint 2 GIF
-<img src="dishList_sprint1_walkthrough2.gif" width=250><br> 
+<img src="dishList_sprint2_walkthrough.gif" width=250><br> 
 
 
 
