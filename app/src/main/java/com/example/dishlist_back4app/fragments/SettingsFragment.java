@@ -7,20 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.example.dishlist_back4app.LoginActivity;
-import com.example.dishlist_back4app.MainActivity;
 import com.example.dishlist_back4app.R;
-import com.example.dishlist_back4app.SignUpActivity;
-import com.parse.Parse;
 import com.parse.ParseUser;
 
 public class SettingsFragment extends Fragment {
-    public static final String TAG = "SettingsFragment";
     private Button btnLogOut;
 
     public SettingsFragment() {
@@ -34,7 +28,6 @@ public class SettingsFragment extends Fragment {
         btnLogOut = view.findViewById(R.id.btnLogOut);
 
         btnLogOut.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 ParseUser.logOut();

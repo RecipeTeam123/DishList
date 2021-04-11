@@ -5,7 +5,8 @@
         android:id="@+id/tiSearch"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="@string/search"
-        app:showAsAction="ifRoom"></item>
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"></item>
     <item
         android:id="@+id/tiFilter"
         android:icon="@drawable/ic_baseline_filter_alt_24"
