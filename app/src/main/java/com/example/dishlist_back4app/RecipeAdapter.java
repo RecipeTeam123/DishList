@@ -10,16 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
 
     private Context context;
     private List<Recipe> recipes;
+    private List<Recipe> recipesCopy;
 
     public RecipeAdapter(Context context, List<Recipe> recipes) {
         this.context = context;
         this.recipes= recipes;
+        recipesCopy = new ArrayList<>();
+        recipesCopy.addAll(recipes);
     }
 
     @NonNull
@@ -72,6 +77,22 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
     public void addAll(List<Recipe> list) {
         recipes.addAll(list);
+        notifyDataSetChanged();
+    }
+
+    //filter method for the recycle view
+    public void filter(String text) {
+        recipes.clear();
+        if(text.isEmpty()) {
+            recipes.addAll(recipesCopy);
+        } else {
+            text = text.toLowerCase();
+            for(Recipe recipe: recipesCopy) {
+                if(recipe.getRecipeName().toLowerCase().contains(text) || recipe.getDescription().toLowerCase().contains(text)) {
+                    recipes.add(recipe);
+                }
+            }
+        }
         notifyDataSetChanged();
     }
 }
