@@ -3,10 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!-- Need modify: the text area in here should all be editText.
-also for edArea id, just not same as recipe.xml's description. :) -->
-
-
         <ImageView
             android:id="@+id/ivPicture"
             android:layout_width="292dp"

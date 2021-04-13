@@ -104,7 +104,6 @@ public class AddRecipeFragment extends Fragment {
                 savePost(title,ingredients,description,method,currentUser,photoFile);
             }
         });
-
     }
 
     private void savePost(String title, String ingredients, String description,String method, ParseUser currentUser,File photoFile) {
@@ -112,7 +111,7 @@ public class AddRecipeFragment extends Fragment {
         post.setDescription(description);
         post.setIngredients(ingredients);
         post.setRecipeName(title);
-        post.setMethod("test");
+        post.setMethod(method);
         post.setImage(new ParseFile(photoFile));
         post.setUser(currentUser);
         post.saveInBackground(new SaveCallback() {
@@ -121,7 +120,6 @@ public class AddRecipeFragment extends Fragment {
                 if(e!=null){
                     Log.e(TAG,"Error while saving",e);
                     Toast.makeText(getContext(),"Error while saving!",Toast.LENGTH_SHORT).show();
-
                 }
                 Log.i(TAG,"Post save was successful!");
                 etDescription.setText("");
@@ -136,7 +134,6 @@ public class AddRecipeFragment extends Fragment {
         // Create a File reference for future access
         photoFile = getPhotoFileUri(photoFileName);
 
-
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
@@ -149,7 +146,6 @@ public class AddRecipeFragment extends Fragment {
             // Start the image capture intent to take photo
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
         }
-
 
     }
 
@@ -165,7 +161,8 @@ public class AddRecipeFragment extends Fragment {
             } else { // Result was a failure
                 Toast.makeText(getContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
-        }    }
+        }
+    }
 
     private File getPhotoFileUri(String fileName) {
         // Get safe storage directory for photos
@@ -177,12 +174,8 @@ public class AddRecipeFragment extends Fragment {
         if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
             Log.d(TAG, "failed to create directory");
         }
-
         // Return the file target for the photo based on filename
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
-
-
     }
-
 
 }
