@@ -3,99 +3,115 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!-- Need modify: the text area in here should all be editText.
-also for edArea id, just not same as recipe.xml's description. :) -->
+        <ImageView
+            android:id="@+id/ivPicture"
+            android:layout_width="292dp"
+            android:layout_height="176dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="58dp" />
 
+        <Button
+            android:id="@+id/btnAddImage"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="224dp"
+            android:layout_marginEnd="147dp"
+            android:gravity="center"
+            android:text="Take Picture" />
 
-    <!--    <ImageView-->
-    <!--        android:id="@+id/ivPicture"-->
-    <!--        android:layout_width="300dp"-->
-    <!--        android:layout_height="250dp"-->
-    <!--        android:layout_alignParentTop="true"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_marginTop="28dp"-->
-    <!--        android:layout_marginEnd="55dp" />-->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="60dp"
+            android:layout_height="36dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="294dp"
+            android:layout_marginEnd="326dp"
+            android:text="Title" />
 
-    <!--    <Button-->
-    <!--        android:id="@+id/btnAddImage"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="35dp"-->
-    <!--        android:layout_alignParentTop="true"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_marginTop="289dp"-->
-    <!--        android:layout_marginEnd="158dp"-->
-    <!--        android:gravity="center"-->
-    <!--        android:text="Add Image" />-->
+        <TextView
+            android:id="@+id/tvIngredients"
+            android:layout_width="80dp"
+            android:layout_height="43dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="394dp"
+            android:layout_marginEnd="307dp"
+            android:text="Ingredients" />
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/tvTitle"-->
-    <!--        android:layout_width="60dp"-->
-    <!--        android:layout_height="36dp"-->
-    <!--        android:layout_alignParentTop="true"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_marginTop="348dp"-->
-    <!--        android:layout_marginEnd="324dp"-->
-    <!--        android:text="Title" />-->
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="344dp"
+            android:layout_marginEnd="312dp"
+            android:text="Description" />
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/tvIngredients"-->
-    <!--        android:layout_width="84dp"-->
-    <!--        android:layout_height="44dp"-->
-    <!--        android:layout_alignParentTop="true"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_marginTop="413dp"-->
-    <!--        android:layout_marginEnd="317dp"-->
-    <!--        android:text="Ingredients" />-->
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="297dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="284dp"
+            android:layout_marginEnd="9dp"
+            android:hint="Enter Title" />
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/tvDescription"-->
-    <!--        android:layout_width="93dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_alignParentTop="true"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_marginTop="496dp"-->
-    <!--        android:layout_marginEnd="304dp"-->
-    <!--        android:text="Method" />-->
+        <EditText
+            android:id="@+id/etIngredients"
+            android:layout_width="301dp"
+            android:layout_height="70dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="391dp"
+            android:layout_marginEnd="6dp"
+            android:hint="Enter Ingredients" />
 
-    <!--    <EditText-->
-    <!--        android:id="@+id/etTitle"-->
-    <!--        android:layout_width="296dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_alignParentTop="true"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_marginTop="338dp"-->
-    <!--        android:layout_marginEnd="7dp"-->
-    <!--        android:hint="Enter Title" />-->
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="295dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="339dp"
+            android:layout_marginEnd="9dp"
+            android:hint="Enter Description" />
 
-    <!--    <EditText-->
-    <!--        android:id="@+id/etIngredients"-->
-    <!--        android:layout_width="301dp"-->
-    <!--        android:layout_height="70dp"-->
-    <!--        android:layout_alignParentTop="true"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_marginTop="396dp"-->
-    <!--        android:layout_marginEnd="1dp"-->
-    <!--        android:hint="Enter Ingredients" />-->
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="567dp"
+            android:layout_marginEnd="158dp"
+            android:gravity="center"
+            android:text="Submit" />
 
-    <!--    <EditText-->
-    <!--        android:id="@+id/etDescription"-->
-    <!--        android:layout_width="296dp"-->
-    <!--        android:layout_height="133dp"-->
-    <!--        android:layout_alignParentTop="true"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_marginTop="479dp"-->
-    <!--        android:layout_marginEnd="6dp"-->
-    <!--        android:hint="Enter Description" />-->
+        <TextView
+            android:id="@+id/tvMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="474dp"
+            android:layout_marginEnd="338dp"
+            android:text="Method" />
 
-    <!--    <Button-->
-    <!--        android:id="@+id/btnSubmit"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="35dp"-->
-    <!--        android:layout_alignParentTop="true"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_marginTop="635dp"-->
-    <!--        android:layout_marginEnd="171dp"-->
-    <!--        android:gravity="center"-->
-    <!--        android:text="Submit" />-->
+        <EditText
+            android:id="@+id/etMethod"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="467dp"
+            android:layout_marginEnd="7dp"
+            android:hint="Enter Method" />
 
 </RelativeLayout>
