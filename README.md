@@ -42,8 +42,8 @@ DishList gives users the ability to find the recipe they are looking for without
 * [fill in your required user stories here]
 - [ ] App will reopen on the same recipe if closed (persistence)
 - [ ] User will remain logged in (persistence)
-- [ ] User can add a recipe
-- [ ] User can add a picture for their recipe
+- [X] User can add a recipe
+- [X] User can add a picture for their recipe
 - [ ] User can find recipes based on ingredients
 
 
