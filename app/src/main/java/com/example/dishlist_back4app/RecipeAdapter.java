@@ -6,10 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
+
 import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
@@ -19,7 +22,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
     public RecipeAdapter(Context context, List<Recipe> recipes) {
         this.context = context;
-        this.recipes= recipes;
+        this.recipes = recipes;
     }
 
     @NonNull
@@ -49,6 +52,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivImage = itemView.findViewById(R.id.ivRecipePicture);
+
+            //resize the image height size, assign 400 now.
+            ivImage.getLayoutParams().height = 400;
             tvRecipeName = itemView.findViewById(R.id.tvRecipeName);
             tvRecipeDescription = itemView.findViewById(R.id.tvRecipeDescription);
         }
@@ -72,6 +78,25 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
     public void addAll(List<Recipe> list) {
         recipes.addAll(list);
+        notifyDataSetChanged();
+    }
+
+    public void filter(String text, List<Recipe> listPassed) {
+        try {
+            recipes.clear();
+            if (text.isEmpty()) {
+                recipes.addAll(listPassed);
+            } else {
+                text = text.toLowerCase();
+                for (Recipe recipe : listPassed) {
+                    if (recipe.getRecipeName().toLowerCase().contains(text) || recipe.getDescription().toLowerCase().contains(text)) {
+                        recipes.add(recipe);
+                    }
+                }
+            }
+        } catch (java.util.ConcurrentModificationException exception) {
+            //exception
+        }
         notifyDataSetChanged();
     }
 }

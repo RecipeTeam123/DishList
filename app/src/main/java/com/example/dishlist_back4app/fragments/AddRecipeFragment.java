@@ -14,25 +14,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
-
 import com.example.dishlist_back4app.R;
 import com.example.dishlist_back4app.Recipe;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-
 import java.io.File;
-
-import Model.Post;
-
 import static android.app.Activity.RESULT_OK;
 
 public class AddRecipeFragment extends Fragment {
@@ -51,29 +45,37 @@ public class AddRecipeFragment extends Fragment {
     private TextView tvTitle;
     private TextView tvMethod;
     private File photoFile;
-    public String photoFileName="photo.jpg";
+    public String photoFileName = "photo.jpg";
+    private View view;
+    private ProgressBar pb;
 
-    public AddRecipeFragment(){} //empty constructor
+    public AddRecipeFragment() {
+    } //empty constructor
 
     @Override
-    public View onCreateView( LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_addrecipe,container,false);
+    public View onCreateView(LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_addrecipe, container, false);
+        return view;
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @NonNull Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         tvDescription = view.findViewById(R.id.tvDescription);
-        tvTitle =view.findViewById(R.id.tvTitle);
-        tvIngredients=view.findViewById(R.id.tvIngredients);
-        tvMethod=view.findViewById(R.id.tvMethod);
-        etMethod=view.findViewById(R.id.etMethod);
-        etDescription=view.findViewById(R.id.etDescription);
-        etTitle=view.findViewById(R.id.etTitle);
-        etIngredients=view.findViewById(R.id.etIngredients);
+        tvTitle = view.findViewById(R.id.tvTitle);
+        tvIngredients = view.findViewById(R.id.tvIngredients);
+        tvMethod = view.findViewById(R.id.tvMethod);
+        etMethod = view.findViewById(R.id.etMethod);
+        etDescription = view.findViewById(R.id.etDescription);
+        etTitle = view.findViewById(R.id.etTitle);
+        etIngredients = view.findViewById(R.id.etIngredients);
         ivPostImage = view.findViewById(R.id.ivPicture);
         btnCaptureImage = view.findViewById(R.id.btnAddImage);
-        btnSubmit =  view.findViewById(R.id.btnSubmit);
+        btnSubmit = view.findViewById(R.id.btnSubmit);
+
+        //declare the process bar
+        pb = (ProgressBar) view.findViewById(R.id.pbPosting);
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,28 +87,31 @@ public class AddRecipeFragment extends Fragment {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String description= etDescription.getText().toString();
+                String description = etDescription.getText().toString();
                 String ingredients = etIngredients.getText().toString();
                 String title = etTitle.getText().toString();
                 String method = etMethod.getText().toString();
 
-                if(description.isEmpty()||ingredients.isEmpty()||title.isEmpty()||method.isEmpty()){
-                    Toast.makeText(getContext(),"Not enough info to submit",Toast.LENGTH_SHORT).show();
+                if (description.isEmpty() || ingredients.isEmpty() || title.isEmpty() || method.isEmpty()) {
+                    Toast.makeText(getContext(), "Not enough info to submit", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(photoFile==null || ivPostImage.getDrawable()==null){
-                    Toast.makeText(getContext(),"An image is needed to submit!",Toast.LENGTH_SHORT).show();
+                if (photoFile == null || ivPostImage.getDrawable() == null) {
+                    Toast.makeText(getContext(), "An image is needed to submit!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                //set process bar
+                pb.setVisibility(ProgressBar.VISIBLE);
 
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(title,ingredients,description,method,currentUser,photoFile);
+                savePost(title, ingredients, description, method, currentUser, photoFile);
             }
         });
     }
 
-    private void savePost(String title, String ingredients, String description,String method, ParseUser currentUser,File photoFile) {
+    private void savePost(String title, String ingredients, String description, String method, ParseUser currentUser, File photoFile) {
         Recipe post = new Recipe();
         post.setDescription(description);
         post.setIngredients(ingredients);
@@ -117,20 +122,25 @@ public class AddRecipeFragment extends Fragment {
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                if(e!=null){
-                    Log.e(TAG,"Error while saving",e);
-                    Toast.makeText(getContext(),"Error while saving!",Toast.LENGTH_SHORT).show();
+                if (e != null) {
+                    Log.e(TAG, "Error while saving", e);
+                    Toast.makeText(getContext(), "Error while saving!", Toast.LENGTH_SHORT).show();
                 }
-                Log.i(TAG,"Post save was successful!");
+                Log.i(TAG, "Post save was successful!");
+                etTitle.setText("");
                 etDescription.setText("");
+                etIngredients.setText("");
+                etMethod.setText("");
                 ivPostImage.setImageResource(0);
+
+                //if the post success saved, progressBar invisible.
+                pb.setVisibility(ProgressBar.INVISIBLE);
             }
         });
-
     }
 
     private void launchCamera() {
-        Intent intent =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Create a File reference for future access
         photoFile = getPhotoFileUri(photoFileName);
 
@@ -146,11 +156,11 @@ public class AddRecipeFragment extends Fragment {
             // Start the image capture intent to take photo
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
         }
-
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable  Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 // by this point we have the camera photo on disk
@@ -171,11 +181,10 @@ public class AddRecipeFragment extends Fragment {
         File mediaStorageDir = new File(getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG);
 
         // Create the storage directory if it does not exist
-        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
+        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()) {
             Log.d(TAG, "failed to create directory");
         }
         // Return the file target for the photo based on filename
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
     }
-
 }

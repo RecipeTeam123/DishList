@@ -5,8 +5,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import androidx.appcompat.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -29,6 +32,7 @@ public class HomeFragment extends Fragment {
     protected RecipeAdapter adapter;
     protected List<Recipe> allRecipes;
     private SwipeRefreshLayout swipeContainer;
+    private List<Recipe> localRecipes;
 
     public HomeFragment() {
         //empty public constructor
@@ -89,14 +93,38 @@ public class HomeFragment extends Fragment {
                 }
                 adapter.clear();
                 allRecipes.addAll(recipes);
+                System.out.println("The special recipe " + allRecipes.size());
                 adapter.notifyDataSetChanged();
                 swipeContainer.setRefreshing(false);
+
+                //store the recipes in local for search. This is the copy of the original allRecipes.
+                localRecipes = new ArrayList<>();
+                localRecipes.addAll(allRecipes);
             }
         });
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_toolbar, menu) ;
+        inflater.inflate(R.menu.menu_toolbar, menu);
+        MenuItem menuItem = menu.findItem(R.id.tiSearch);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+
+        //change keyboard search icon inorder mix search.
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Log.i(TAG, "copy of the local list " + storeRecipesLocal.size());
+                adapter.filter(newText, localRecipes);
+                return false;
+            }
+        });
     }
 }
