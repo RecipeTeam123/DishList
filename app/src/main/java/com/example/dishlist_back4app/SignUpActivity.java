@@ -34,7 +34,8 @@ public class SignUpActivity extends AppCompatActivity {
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
                 String confirmPass = confirmPassword.getText().toString();
-                if (user.length() == 0 || pass.length() == 0) {
+                if (user.length() == 0 || pass.length() == 0 || confirmPass.length()==0) {
+                    Toast.makeText(SignUpActivity.this, "Not enough info",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
