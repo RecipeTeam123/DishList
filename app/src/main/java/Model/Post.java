@@ -5,14 +5,17 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-@ParseClassName("TodoItem")
+import org.parceler.Parcel;
 
+@ParseClassName("TodoItem")
 public class Post extends ParseObject {
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER = "user";
     public static final String KEY_INGREDIENTS = "ingredients";
     public static final String KEY_RECIPENAME="recipeName";
+
+
 
     public String getIngredients(){
         return getString(KEY_INGREDIENTS);

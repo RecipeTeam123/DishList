@@ -1,15 +1,23 @@
 package com.example.dishlist_back4app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
+
+import org.parceler.Parcel;
+import org.parceler.Parcels;
+
 import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
@@ -21,6 +29,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         this.context = context;
         this.recipes= recipes;
     }
+
+
 
     @NonNull
     @Override
@@ -41,7 +51,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-
+        RelativeLayout container;
         private ImageView ivImage;
         private TextView tvRecipeName;
         private TextView tvRecipeDescription;
@@ -51,6 +61,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             ivImage = itemView.findViewById(R.id.ivRecipePicture);
             tvRecipeName = itemView.findViewById(R.id.tvRecipeName);
             tvRecipeDescription = itemView.findViewById(R.id.tvRecipeDescription);
+            container = itemView.findViewById(R.id.container);
         }
 
         public void bind(Recipe recipe) {
@@ -62,6 +73,18 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
+            container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, DetailActivity.class);
+
+                    i.putExtra("recipe name", recipe.getRecipeName());
+                    i.putExtra("recipe ingredients", recipe.getIngredients());
+                    i.putExtra("recipe steps", recipe.getMethod());
+
+                    context.startActivity(i);
+                }
+            });
         }
     }
 
