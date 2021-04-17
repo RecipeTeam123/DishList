@@ -13,8 +13,10 @@ import com.parse.SignUpCallback;
 
 public class SignUpActivity extends AppCompatActivity {
     private Button btnSignUp;
+    private Button btnCancel;
     private EditText username;
     private EditText password;
+    private EditText confirmPassword;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         username = findViewById(R.id.etUsername);
         password = findViewById(R.id.etPassword);
+        confirmPassword=findViewById(R.id.etConfirmPassword);
 
         btnSignUp = findViewById(R.id.btnSignUp);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -30,13 +33,30 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
-                if (user.length() == 0 || pass.length() == 0) {
+                String confirmPass = confirmPassword.getText().toString();
+                if (user.length() == 0 || pass.length() == 0 || confirmPass.length()==0) {
+                    Toast.makeText(SignUpActivity.this, "Not enough info",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(!(pass.matches(confirmPass))){
+                    Toast.makeText(SignUpActivity.this,"Passwords Do Not Match",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 signUp(user, pass);
-                Toast.makeText(SignUpActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, "Welcome to DishList", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnCancel=findViewById(R.id.btnCancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //return to login screen
+                Intent intent = new Intent(SignUpActivity.this,LoginActivity.class);
                 startActivity(intent);
             }
         });
