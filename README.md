@@ -32,8 +32,8 @@ DishList gives users the ability to find the recipe they are looking for without
 - [X] User can register an account
 - [X] User can log in
 - [X] User can see a list of recipes
-- [ ] User can search/filter recipes
-- [ ] User can open a specific recipe
+- [X] User can search/filter recipes
+- [X] User can open a specific recipe
 - [ ] User can save favorite recipes
 
 
@@ -41,10 +41,10 @@ DishList gives users the ability to find the recipe they are looking for without
 
 * [fill in your required user stories here]
 - [ ] App will reopen on the same recipe if closed (persistence)
-- [ ] User will remain logged in (persistence)
+- [X] User will remain logged in (persistence)
 - [X] User can add a recipe
 - [X] User can add a picture for their recipe
-- [ ] User can find recipes based on ingredients
+- [X] User can find recipes based on ingredients
 
 
 ### App Walkthough GIF
@@ -57,6 +57,11 @@ Here is a walkthough GIF for Sprint 1:
 Here is a walkthough GIF for Sprint 2:
 
 <img src="dishList_sprint2_walkthrough.gif" width=250><br> 
+
+
+Here is a walkthough GIF for Sprint 3:
+
+<img src="dishList_sprint3_walkthrough.gif" width=250><br> 
 
 
 
