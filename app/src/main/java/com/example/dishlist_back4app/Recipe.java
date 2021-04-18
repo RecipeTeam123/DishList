@@ -5,6 +5,8 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.parceler.Parcel;
+
 @ParseClassName("Recipe")
 public class Recipe extends ParseObject {
     public static final String KEY_RECIPE_NAME = "recipeName";

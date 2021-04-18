@@ -1,10 +1,12 @@
 package com.example.dishlist_back4app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,12 +14,12 @@ import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
 import java.util.List;
 
-public class AdapterUser extends RecyclerView.Adapter<AdapterUser.ViewHolder> {
+public class CurrentUserRecipeAdapter extends RecyclerView.Adapter<CurrentUserRecipeAdapter.ViewHolder> {
 
     private Context context;
     private List<Recipe> recipes;
 
-    public AdapterUser(Context context, List<Recipe> recipes) {
+    public CurrentUserRecipeAdapter(Context context, List<Recipe> recipes) {
         this.context = context;
         this.recipes = recipes;
     }
@@ -30,7 +32,7 @@ public class AdapterUser extends RecyclerView.Adapter<AdapterUser.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterUser.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CurrentUserRecipeAdapter.ViewHolder holder, int position) {
         Recipe recipe = recipes.get(position);
         holder.bind(recipe);
     }
@@ -44,12 +46,14 @@ public class AdapterUser extends RecyclerView.Adapter<AdapterUser.ViewHolder> {
 
         private ImageView ivImage;
         private TextView tvRecipeName;
+        LinearLayout userContainer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivImage = itemView.findViewById(R.id.ivRecipePictureUser);
             ivImage.getLayoutParams().height = 400;
             tvRecipeName = itemView.findViewById(R.id.tvRecipeNameUser);
+            userContainer = itemView.findViewById(R.id.userContainer);
         }
 
         public void bind(Recipe recipe) {
@@ -60,6 +64,22 @@ public class AdapterUser extends RecyclerView.Adapter<AdapterUser.ViewHolder> {
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
+
+            //click the home container to the detail stream
+            userContainer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, DetailActivity.class);
+
+                    i.putExtra("recipe name", recipe.getRecipeName());
+                    i.putExtra("recipe ingredients", recipe.getIngredients());
+                    i.putExtra("recipe method", recipe.getMethod());
+                    i.putExtra("recipe description", recipe.getDescription());
+                    i.putExtra("recipe image", recipe.getImage());
+
+                    context.startActivity(i);
+                }
+            });
         }
     }
 

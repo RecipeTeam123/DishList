@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.dishlist_back4app.AdapterUser;
+import com.example.dishlist_back4app.CurrentUserRecipeAdapter;
 import com.example.dishlist_back4app.LoginActivity;
 import com.example.dishlist_back4app.R;
 import com.example.dishlist_back4app.Recipe;
@@ -33,7 +33,7 @@ public class SettingsFragment extends Fragment {
 
     private RecyclerView rvRecipe;
     private SwipeRefreshLayout swipeContainer;
-    protected AdapterUser adapter;
+    protected CurrentUserRecipeAdapter adapter;
     protected List<Recipe> currentUserRecipe;
     private TextView tvCurrentUser;
     public static final String TAG = "SettingsFragment";
@@ -54,7 +54,7 @@ public class SettingsFragment extends Fragment {
         tvCurrentUser = view.findViewById(R.id.tvUserName);
         rvRecipe = view.findViewById(R.id.rvRecipesInUser);
         currentUserRecipe = new ArrayList<>();
-        adapter = new AdapterUser(getContext(), currentUserRecipe);
+        adapter = new CurrentUserRecipeAdapter(getContext(), currentUserRecipe);
 
         rvRecipe.setAdapter(adapter);
 
