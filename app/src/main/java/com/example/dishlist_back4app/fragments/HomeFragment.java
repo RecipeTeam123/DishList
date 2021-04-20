@@ -76,7 +76,7 @@ public class HomeFragment extends Fragment {
     protected void queryRecipes() {
         ParseQuery<Recipe> query = ParseQuery.getQuery(Recipe.class);
         query.include(Recipe.KEY_USER);
-        query.setLimit(20);
+        //query.setLimit(20);
 
         //list by the created at
         query.addDescendingOrder(Recipe.KEY_CREATED_KEY);
