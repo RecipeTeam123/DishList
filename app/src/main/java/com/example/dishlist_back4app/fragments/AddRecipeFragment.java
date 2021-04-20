@@ -27,6 +27,9 @@ import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.app.Activity.RESULT_OK;
 
 public class AddRecipeFragment extends Fragment {
@@ -118,6 +121,8 @@ public class AddRecipeFragment extends Fragment {
         post.setRecipeName(title);
         post.setMethod(method);
         post.setImage(new ParseFile(photoFile));
+        post.setRecipeLikes(0);
+        post.setLikedUsers(new ArrayList<>());
         post.setUser(currentUser);
         post.saveInBackground(new SaveCallback() {
             @Override
