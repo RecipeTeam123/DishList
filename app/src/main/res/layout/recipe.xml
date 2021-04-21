@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tvRecipeDescription"
-        android:layout_marginLeft="345dp"
+        android:layout_marginLeft="342dp"
         android:orientation="horizontal">
 
         <ImageView
