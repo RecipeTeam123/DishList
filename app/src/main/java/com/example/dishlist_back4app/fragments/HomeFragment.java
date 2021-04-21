@@ -71,9 +71,6 @@ public class HomeFragment extends Fragment {
             }
         });
         queryRecipes();
-
-        //click on the filter
-
     }
 
     protected void queryRecipes() {
