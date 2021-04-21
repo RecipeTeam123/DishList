@@ -1,6 +1,5 @@
 package com.example.dishlist_back4app.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,16 +16,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import com.example.dishlist_back4app.LoginActivity;
 import com.example.dishlist_back4app.R;
 import com.example.dishlist_back4app.Recipe;
 import com.example.dishlist_back4app.RecipeAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
-
 import java.util.ArrayList;
 import java.util.List;
 
