@@ -1,5 +1,6 @@
 package com.example.dishlist_back4app.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,12 +17,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.example.dishlist_back4app.LoginActivity;
 import com.example.dishlist_back4app.R;
 import com.example.dishlist_back4app.Recipe;
 import com.example.dishlist_back4app.RecipeAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +76,9 @@ public class HomeFragment extends Fragment {
             }
         });
         queryRecipes();
+
+        //click on the filter
+
     }
 
     protected void queryRecipes() {
@@ -108,6 +116,7 @@ public class HomeFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_toolbar, menu);
         MenuItem menuItem = menu.findItem(R.id.tiSearch);
+        MenuItem menuItemFilter = menu.findItem(R.id.tiFilter);
         SearchView searchView = (SearchView) menuItem.getActionView();
 
         //change keyboard search icon inorder mix search.
@@ -122,7 +131,17 @@ public class HomeFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 // Log.i(TAG, "copy of the local list " + storeRecipesLocal.size());
-                adapter.filter(newText, localRecipes);
+                adapter.filterSearch(newText, localRecipes);
+                return false;
+            }
+        });
+
+        //filter icon
+        menuItemFilter.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Log.i(TAG, "filter icon clicked");
+                adapter.filterLike(localRecipes);
                 return false;
             }
         });

@@ -20,6 +20,9 @@ import com.parse.ParseUser;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
@@ -88,7 +91,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             //on if the user liked the post in the past
             if(recipe.UserLiked(user.getObjectId())){
                 //fills the heart and sets it at active
-                ivHeart.setImageResource(R.drawable.ufi_heart_active);
+                ivHeart.setImageResource(R.drawable.filled_like);
             }else{
                 //empties the heart and sets it as inactive
                 ivHeart.setImageResource(R.drawable.recipe_like_heart);
@@ -107,7 +110,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
                         notifyDataSetChanged();
                     }else{    //else, like the post
                         recipe.addLikedUser(user.getObjectId());
-                        ivHeart.setImageResource(R.drawable.ufi_heart_active);
+                        ivHeart.setImageResource(R.drawable.filled_like);
                         recipe.setRecipeLikes(recipe.getRecipeLikes()+1);
                         recipe.saveInBackground();
                         notifyDataSetChanged();
@@ -144,7 +147,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         notifyDataSetChanged();
     }
 
-    public void filter(String text, List<Recipe> listPassed) {
+    public void filterSearch(String text, List<Recipe> listPassed) {
         try {
             recipes.clear();
             if (text.isEmpty()) {
@@ -160,6 +163,18 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         } catch (java.util.ConcurrentModificationException exception) {
             //exception
         }
+        notifyDataSetChanged();
+    }
+
+    public void filterLike(List<Recipe> listPassed) {
+        recipes.clear();
+        Collections.sort(listPassed, new Comparator<Recipe>() {
+            @Override
+            public int compare(Recipe o1, Recipe o2) {
+                return o2.getRecipeLikes() - o1.getRecipeLikes();
+            }
+        });
+        recipes.addAll(listPassed);
         notifyDataSetChanged();
     }
 }
