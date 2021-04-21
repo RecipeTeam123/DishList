@@ -108,6 +108,7 @@ public class HomeFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_toolbar, menu);
         MenuItem menuItem = menu.findItem(R.id.tiSearch);
+        MenuItem menuItemFilter = menu.findItem(R.id.tiFilter);
         SearchView searchView = (SearchView) menuItem.getActionView();
 
         //change keyboard search icon inorder mix search.
@@ -122,7 +123,17 @@ public class HomeFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 // Log.i(TAG, "copy of the local list " + storeRecipesLocal.size());
-                adapter.filter(newText, localRecipes);
+                adapter.filterSearch(newText, localRecipes);
+                return false;
+            }
+        });
+
+        //filter icon
+        menuItemFilter.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Log.i(TAG, "filter icon clicked");
+                adapter.filterLike(localRecipes);
                 return false;
             }
         });
