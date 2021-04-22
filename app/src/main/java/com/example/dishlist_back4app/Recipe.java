@@ -25,7 +25,12 @@ public class Recipe extends ParseObject {
     public static final String KEY_CREATED_KEY = "createdAt";
     public static final String KEY_LIKES = "likes";
     public static final String KEY_LIKED_USERS = "liked_users";
+    public static final String KEY_VIEWS = "views";
     public static final String TAG = "Recipe;";
+
+    public int getRecipeViews(){return getInt(KEY_VIEWS);}
+
+    public void setRecipeViews(int views){put(KEY_VIEWS,views);}
 
     public List getLiked_Users(){
         return getList(KEY_LIKED_USERS);

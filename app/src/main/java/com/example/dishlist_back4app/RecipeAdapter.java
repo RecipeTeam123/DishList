@@ -16,6 +16,7 @@ import com.parse.ParseUser;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Handler;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
 
@@ -52,6 +53,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         private TextView tvRecipeDescription;
         private TextView tvLikes;
         private ImageView ivHeart;
+        private TextView tvViews;
         RelativeLayout container;
 
         public ViewHolder(@NonNull View itemView) {
@@ -64,6 +66,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             tvRecipeName = itemView.findViewById(R.id.tvRecipeName);
             tvRecipeDescription = itemView.findViewById(R.id.tvRecipeDescription);
             tvLikes = itemView.findViewById(R.id.tvLikes);
+            tvViews = itemView.findViewById(R.id.tvViews);
             container = itemView.findViewById(R.id.container);
         }
 
@@ -72,6 +75,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             tvRecipeName.setText(recipe.getRecipeName());
             tvRecipeDescription.setText(recipe.getDescription());
             tvLikes.setText(String.valueOf(recipe.getRecipeLikes()));
+            tvViews.setText(String.valueOf(recipe.getRecipeViews()) + " views");
 
             ParseFile image = recipe.getImage();
             if (image != null) {
@@ -114,6 +118,21 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             container.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //add a view to the view counter
+                    recipe.setRecipeViews(recipe.getRecipeViews()+1);
+                    recipe.saveInBackground();
+
+                    //the purpose of postDelayed is to delay the action
+                    //this doesn't add any great functionality besides making
+                    //the app look and feel better, w/o it the view counter
+                    //increments before even entering the detail activity
+                    tvViews.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            notifyDataSetChanged();
+                        }
+                    },500);
+
                     Intent i = new Intent(context, DetailActivity.class);
 
                     i.putExtra("recipe name", recipe.getRecipeName());
