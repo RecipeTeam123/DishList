@@ -122,7 +122,9 @@ public class AddRecipeFragment extends Fragment {
         post.setMethod(method);
         post.setImage(new ParseFile(photoFile));
         post.setRecipeLikes(0);
+        post.setRecipeViews(0);
         post.setLikedUsers(new ArrayList<>());
+        post.setViewedUsers(new ArrayList<>());
         post.setUser(currentUser);
         post.saveInBackground(new SaveCallback() {
             @Override
