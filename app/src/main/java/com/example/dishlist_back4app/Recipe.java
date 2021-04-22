@@ -26,7 +26,28 @@ public class Recipe extends ParseObject {
     public static final String KEY_LIKES = "likes";
     public static final String KEY_LIKED_USERS = "liked_users";
     public static final String KEY_VIEWS = "views";
+    public static final String KEY_VIEWED_USERS = "viewed_users";
     public static final String TAG = "Recipe;";
+
+    public void setViewedUsers(List<String> list){ put(KEY_VIEWED_USERS, list);}
+
+    public boolean UserViewed(String user){
+        List<String> list =new ArrayList<String>();
+        list=getList(KEY_VIEWED_USERS);
+        for(int i=0;i<list.size();i++){
+            if(user.matches(list.get(i))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addViewedUser(String user){
+        List<String> list =new ArrayList<String>();
+        list.addAll(getList(KEY_VIEWED_USERS));
+        list.add(user);
+        put(KEY_VIEWED_USERS, list);
+    }
 
     public int getRecipeViews(){return getInt(KEY_VIEWS);}
 

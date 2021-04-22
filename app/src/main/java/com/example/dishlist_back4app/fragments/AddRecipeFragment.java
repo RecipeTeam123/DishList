@@ -124,6 +124,7 @@ public class AddRecipeFragment extends Fragment {
         post.setRecipeLikes(0);
         post.setRecipeViews(0);
         post.setLikedUsers(new ArrayList<>());
+        post.setViewedUsers(new ArrayList<>());
         post.setUser(currentUser);
         post.saveInBackground(new SaveCallback() {
             @Override

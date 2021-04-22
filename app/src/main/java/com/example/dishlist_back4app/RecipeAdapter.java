@@ -118,20 +118,24 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             container.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //add a view to the view counter
-                    recipe.setRecipeViews(recipe.getRecipeViews()+1);
-                    recipe.saveInBackground();
+                    if(!recipe.UserViewed(user.getObjectId())) {
+                        //if user hasn't viewed the recipe, add a view to the view counter
+                        // and add user to list of viewed users
+                        recipe.setRecipeViews(recipe.getRecipeViews() + 1);
+                        recipe.addViewedUser(user.getObjectId());
+                        recipe.saveInBackground();
 
-                    //the purpose of postDelayed is to delay the action
-                    //this doesn't add any great functionality besides making
-                    //the app look and feel better, w/o it the view counter
-                    //increments before even entering the detail activity
-                    tvViews.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            notifyDataSetChanged();
-                        }
-                    },500);
+                        //the purpose of postDelayed is to delay the action
+                        //this doesn't add any great functionality besides making
+                        //the app look and feel better, w/o it the view counter
+                        //increments before even entering the detail activity
+                        tvViews.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                notifyDataSetChanged();
+                            }
+                        }, 500);
+                    }
 
                     Intent i = new Intent(context, DetailActivity.class);
 
