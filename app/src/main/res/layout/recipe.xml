@@ -46,33 +46,32 @@
         tools:text="Upgrade cheesy tomato pasta with gnocchi, chorizo and mozzarella for a comforting bake that makes an excellent midweek meal" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/tvRecipeDescription"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="327dp"
         android:layout_marginLeft="342dp"
+        android:layout_marginTop="9dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/ivHeart"
-            android:layout_width="20dp"
+            android:layout_width="22dp"
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="-3dp"
             app:srcCompat="@drawable/recipe_like_heart" />
 
         <TextView
             android:id="@+id/tvLikes"
-            android:layout_width="wrap_content"
+            android:layout_width="26dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ivHeart"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="5dp"
             android:layout_toStartOf="@+id/ivHeart"
             android:gravity="center"
-            android:text="100"
-            android:textAlignment="center" />
+            android:text="100" />
     </LinearLayout>
 
 </RelativeLayout>
