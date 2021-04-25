@@ -1,7 +1,6 @@
 package com.example.dishlist_back4app;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -13,7 +12,7 @@ import android.view.MenuItem;
 import androidx.appcompat.widget.Toolbar;
 import com.example.dishlist_back4app.fragments.AddRecipeFragment;
 import com.example.dishlist_back4app.fragments.HomeFragment;
-import com.example.dishlist_back4app.fragments.SettingsFragment;
+import com.example.dishlist_back4app.fragments.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -54,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment = new AddRecipeFragment();
                         break;
                     case R.id.action_settings:
-                        selectedFragment = new SettingsFragment();
+                        selectedFragment = new UserFragment();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
