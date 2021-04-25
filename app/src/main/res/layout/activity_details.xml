@@ -18,6 +18,46 @@
             android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/avatars" />
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30dp">
+
+            <TextView
+                android:id="@+id/tvDetailViews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="4dp"
+                android:text="views"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/ivDetailHeart"
+                android:layout_width="23dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="39dp"
+                android:layout_marginRight="39dp"
+                app:srcCompat="@drawable/recipe_like_heart" />
+
+            <TextView
+                android:id="@+id/tvDetailLikes"
+                android:layout_width="37dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="6dp"
+                android:gravity="center"
+                android:text="100"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
         <TextView
             android:id="@+id/tvDetailTitle"
             android:layout_width="match_parent"

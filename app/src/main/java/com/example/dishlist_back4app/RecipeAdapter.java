@@ -1,5 +1,6 @@
 package com.example.dishlist_back4app;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
+
+import org.parceler.Parcels;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -22,6 +26,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
     private Context context;
     private List<Recipe> recipes;
+    public static final int REQUEST_CODE = 0;
+
+    public  void onActivityResult(int requestCode, int resultCode, Intent data) {
+    }
+
 
     public RecipeAdapter(Context context, List<Recipe> recipes) {
         this.context = context;
@@ -139,14 +148,12 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
                     Intent i = new Intent(context, DetailActivity.class);
 
-                    i.putExtra("recipe name", recipe.getRecipeName());
-                    i.putExtra("recipe ingredients", recipe.getIngredients());
-                    i.putExtra("recipe method", recipe.getMethod());
-                    i.putExtra("recipe description", recipe.getDescription());
-                    i.putExtra("recipe image", recipe.getImage());
-                    i.putExtra("recipe likes",recipe.getRecipeLikes());
+                    i.putExtra("recipe", recipe);
 
-                    context.startActivity(i);
+                    //context.startActivity(i);
+
+                    ((Activity) context).startActivityForResult(i, REQUEST_CODE);
+
                 }
             });
         }
@@ -192,4 +199,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         recipes.addAll(listPassed);
         notifyDataSetChanged();
     }
+
+
 }
