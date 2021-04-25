@@ -71,11 +71,7 @@ public class CurrentUserRecipeAdapter extends RecyclerView.Adapter<CurrentUserRe
                 public void onClick(View v) {
                     Intent i = new Intent(context, DetailActivity.class);
 
-                    i.putExtra("recipe name", recipe.getRecipeName());
-                    i.putExtra("recipe ingredients", recipe.getIngredients());
-                    i.putExtra("recipe method", recipe.getMethod());
-                    i.putExtra("recipe description", recipe.getDescription());
-                    i.putExtra("recipe image", recipe.getImage());
+                    i.putExtra("recipe", recipe);
 
                     context.startActivity(i);
                 }

@@ -29,16 +29,16 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SettingsFragment extends Fragment {
+public class UserFragment extends Fragment {
 
     private RecyclerView rvRecipe;
     private SwipeRefreshLayout swipeContainer;
     protected CurrentUserRecipeAdapter adapter;
     protected List<Recipe> currentUserRecipe;
     private TextView tvCurrentUser;
-    public static final String TAG = "SettingsFragment";
+    public static final String TAG = "UserFragment";
 
-    public SettingsFragment() {
+    public UserFragment() {
         //empty public constructor
     }
 
