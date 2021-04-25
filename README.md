@@ -34,7 +34,7 @@ DishList gives users the ability to find the recipe they are looking for without
 - [X] User can see a list of recipes
 - [X] User can search/filter recipes
 - [X] User can open a specific recipe
-- [ ] User can save favorite recipes
+- [X] User can favorite recipes
 
 
 **Optional Nice-to-have Stories**
