@@ -1,5 +1,6 @@
 package com.example.dishlist_back4app;
 
+import android.os.Parcelable;
 import android.util.Log;
 
 import com.parse.ParseClassName;
@@ -10,12 +11,13 @@ import com.parse.ParseUser;
 import org.json.JSONArray;
 import org.parceler.Parcel;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 @ParseClassName("Recipe")
-public class Recipe extends ParseObject {
+public class Recipe extends ParseObject implements Parcelable {
     public static final String KEY_RECIPE_NAME = "recipeName";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_DESCRIPTION = "description";
