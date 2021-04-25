@@ -8,6 +8,7 @@
     <string name="home">Home</string>
     <string name="add_recipe">Add Recipe</string>
     <string name="user">User</string>
-    <string name="filter">Filter</string>
+    <string name="filterLike">sort by likes</string>
+    <string name="filterViews">sort by views</string>
     <string name="image_for_recipe">Image for recipe</string>
 </resources>

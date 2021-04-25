@@ -8,9 +8,15 @@
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="androidx.appcompat.widget.SearchView"></item>
     <item
-        android:id="@+id/tiFilter"
+        android:id="@+id/tiFilterLikes"
         android:icon="@drawable/ic_baseline_filter_alt_24"
-        android:title="@string/filter"
-        app:showAsAction="ifRoom"></item>
+        android:title="@string/filterLike"
+        app:showAsAction="never"></item>
+
+    <item
+        android:id="@+id/tiFilterViews"
+        android:icon="@drawable/ic_baseline_filter_alt_24"
+        android:title="@string/filterViews"
+        app:showAsAction="never"></item>
 
 </menu>

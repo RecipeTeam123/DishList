@@ -108,7 +108,8 @@ public class HomeFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_toolbar, menu);
         MenuItem menuItem = menu.findItem(R.id.tiSearch);
-        MenuItem menuItemFilter = menu.findItem(R.id.tiFilter);
+        MenuItem menuItemFilterLike = menu.findItem(R.id.tiFilterLikes);
+        MenuItem menuItemFilterView = menu.findItem(R.id.tiFilterViews);
         SearchView searchView = (SearchView) menuItem.getActionView();
 
         //change keyboard search icon inorder mix search.
@@ -129,11 +130,21 @@ public class HomeFragment extends Fragment {
         });
 
         //filter icon
-        menuItemFilter.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        menuItemFilterLike.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Log.i(TAG, "filter icon clicked");
                 adapter.filterLike(localRecipes);
+                return false;
+            }
+        });
+
+        //filter icon
+        menuItemFilterView.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Log.i(TAG, "filter icon clicked");
+                adapter.filterViews(localRecipes);
                 return false;
             }
         });

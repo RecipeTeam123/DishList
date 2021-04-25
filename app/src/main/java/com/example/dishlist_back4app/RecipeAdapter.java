@@ -14,13 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
-
-import org.parceler.Parcels;
-
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.logging.Handler;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
 
@@ -200,5 +196,15 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         notifyDataSetChanged();
     }
 
-
+    public void filterViews(List<Recipe> listPassed) {
+        recipes.clear();
+        Collections.sort(listPassed, new Comparator<Recipe>() {
+            @Override
+            public int compare(Recipe o1, Recipe o2) {
+                return o2.getRecipeViews() - o1.getRecipeViews();
+            }
+        });
+        recipes.addAll(listPassed);
+        notifyDataSetChanged();
+    }
 }
