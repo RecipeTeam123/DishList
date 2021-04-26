@@ -63,6 +63,10 @@ Here is a walkthough GIF for Sprint 3:
 
 <img src="dishList_sprint3_walkthrough.gif" width=250><br> 
 
+Here is a walkthough GIF for Sprint 4:
+
+<img src="dishList_sprint4_walkthrough.gif" width=250><br> 
+
 
 
 ### 2. Screen Archetypes
